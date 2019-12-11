@@ -24,5 +24,35 @@ namespace Array
         {
             InitializeComponent();
         }
+        Random rnd = new Random();
+        private void btnGenera_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int valore = int.Parse(txtValore.Text);
+                if (valore <= 0)
+                    throw new Exception("Il numero deve essere maggiore di 0!");
+                int[] array = new int[valore];
+                for (int i = 0; i < array.Length; i++)
+                {
+                    array[i] = rnd.Next();
+                }
+                lblResult.Content = "[";
+                for (int i = 0; i < array.Length; i++)
+                {
+                    lblResult.Content = lblResult.Content + $"{array[i]}";
+                    if ( i < array.Length - 1)
+                        lblResult.Content += ",";
+                }
+                lblResult.Content += "]";
+                string file = @"stato.txt";
+                file = System.IO.StreamWriter(lblResult.Content);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                txtValore.Text = "";
+            }
+        }
     }
 }
