@@ -20,6 +20,8 @@ namespace Array
     /// </summary>
     public partial class MainWindow : Window
     {
+        int maxSize = 10000;
+        int maxValue = 1000;
         public MainWindow()
         {
             InitializeComponent();
@@ -30,12 +32,10 @@ namespace Array
             try
             {
                 int valore = int.Parse(txtValore.Text);
-                if (valore <= 0)
-                    throw new Exception("Il numero deve essere maggiore di 0!");
                 int[] array = new int[valore];
                 for (int i = 0; i < array.Length; i++)
                 {
-                    array[i] = rnd.Next();
+                    array[i] = rnd.Next(1, maxValue);
                 }
                 lblResult.Content = "[";
                 for (int i = 0; i < array.Length; i++)
@@ -45,13 +45,33 @@ namespace Array
                         lblResult.Content += ",";
                 }
                 lblResult.Content += "]";
-                string file = @"stato.txt";
-                file = System.IO.StreamWriter(lblResult.Content);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 txtValore.Text = "";
+            }
+        }
+
+        private void TxtValore_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                int valore = int.Parse(txtValore.Text);
+                if (valore <= 0 || valore > maxSize)
+                {
+                    btnGenera.IsEnabled = false;
+                    txtValore.Foreground = Brushes.Red;
+                }
+                else
+                {
+                    txtValore.Foreground = Brushes.Black;
+                    btnGenera.IsEnabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

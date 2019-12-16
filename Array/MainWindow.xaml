@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="Stampa e Salva Array" Height="450" Width="800">
     <Grid>
-        <TextBox Name="txtValore" HorizontalAlignment="Left" Height="23" Margin="185,116,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button Name="btnGenera" Content="Genera" HorizontalAlignment="Left" Margin="365,116,0,0" VerticalAlignment="Top" Width="75" Click="btnGenera_Click" Height="23"/>
-        <Label Name="lblResult" Content="" HorizontalAlignment="Left" Margin="185,190,0,0" VerticalAlignment="Top" Width="255" Background="#FFFFF0BE"/>
+        <TextBox Name="txtValore" HorizontalAlignment="Left" Height="23" Margin="185,116,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="TxtValore_TextChanged"/>
+        <Button IsEnabled="False"  Name="btnGenera" Content="Genera" HorizontalAlignment="Left" Margin="365,116,0,0" VerticalAlignment="Top" Width="75" Click="btnGenera_Click" Height="23"/>
+        <Label Name="lblResult" Content="" HorizontalAlignment="Left" Margin="185,190,0,0" VerticalAlignment="Top" Width="255" Background="#FFFFF0BE" Height="81"/>
 
     </Grid>
 </Window>
